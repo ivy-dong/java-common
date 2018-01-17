@@ -1,0 +1,9 @@
+**/bin/
+**/.metadata/
+**/.settings/
+**/target/
+**/.recommenders/
+crypto/example/keys/*
+**/*.jar
+**.class
+**.DS_Store
