@@ -31,10 +31,6 @@ import java.security.cert.X509Certificate;
 
 import org.bouncycastle.util.encoders.Base64;
 
-/**
- * @author bryan
- *
- */
 public class CertTool {
 
 	/**

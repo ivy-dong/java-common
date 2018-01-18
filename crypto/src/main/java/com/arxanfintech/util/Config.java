@@ -19,10 +19,6 @@ package com.arxanfintech.util;
 
 import java.util.Properties;
 
-/**
- * @author bryan
- *
- */
 public class Config {
 	private static Properties _prop;
 
