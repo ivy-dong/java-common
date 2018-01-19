@@ -1,4 +1,4 @@
-package com.arxanfintech.core.crypto.cryptohash;
+package com.arxanfintech.common.core.crypto.cryptohash;
 
 abstract class KeccakCore extends DigestEngine {
 
@@ -65,13 +65,13 @@ abstract class KeccakCore extends DigestEngine {
 			| ((buf[off + 7] & 0xFFL) << 56);
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.DigestEngine */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.DigestEngine */
 	protected void engineReset()
 	{
 		doReset();
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.DigestEngine */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.DigestEngine */
 	protected void processBlock(byte[] data)
 	{
 		/* Input block */
@@ -481,7 +481,7 @@ abstract class KeccakCore extends DigestEngine {
 		}
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.DigestEngine */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.DigestEngine */
 	protected void doPadding(byte[] out, int off)
 	{
 		int ptr = flush();
@@ -507,7 +507,7 @@ abstract class KeccakCore extends DigestEngine {
 		System.arraycopy(tmpOut, 0, out, off, dlen);
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.DigestEngine */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.DigestEngine */
 	protected void doInit()
 	{
 		A = new long[25];
@@ -515,7 +515,7 @@ abstract class KeccakCore extends DigestEngine {
 		doReset();
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
 	public int getBlockLength()
 	{
 		return 200 - 2 * getDigestLength();
@@ -533,14 +533,14 @@ abstract class KeccakCore extends DigestEngine {
 		A[20] = 0xFFFFFFFFFFFFFFFFL;
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.DigestEngine */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.DigestEngine */
 	protected Digest copyState(KeccakCore dst)
 	{
 		System.arraycopy(A, 0, dst.A, 0, 25);
 		return super.copyState(dst);
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
 	public String toString()
 	{
 		return "Keccak-" + (getDigestLength() << 3);

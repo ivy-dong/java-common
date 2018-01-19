@@ -1,4 +1,4 @@
-package com.arxanfintech.core.crypto.cryptohash;
+package com.arxanfintech.common.core.crypto.cryptohash;
 
 public abstract class DigestEngine implements Digest {
 
@@ -60,7 +60,7 @@ public abstract class DigestEngine implements Digest {
 		}
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
 	public byte[] digest()
 	{
 		adjustDigestLen();
@@ -69,14 +69,14 @@ public abstract class DigestEngine implements Digest {
 		return result;
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
 	public byte[] digest(byte[] input)
 	{
 		update(input, 0, input.length);
 		return digest();
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
 	public int digest(byte[] buf, int offset, int len)
 	{
 		adjustDigestLen();
@@ -92,7 +92,7 @@ public abstract class DigestEngine implements Digest {
 		}
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
 	public void reset()
 	{
 		engineReset();
@@ -100,7 +100,7 @@ public abstract class DigestEngine implements Digest {
 		blockCount = 0;
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
 	public void update(byte input)
 	{
 		inputBuf[inputLen ++] = (byte)input;
@@ -111,13 +111,13 @@ public abstract class DigestEngine implements Digest {
 		}
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
 	public void update(byte[] input)
 	{
 		update(input, 0, input.length);
 	}
 
-	/** @see com.arxanfintech.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
 	public void update(byte[] input, int offset, int len)
 	{
 		while (len > 0) {

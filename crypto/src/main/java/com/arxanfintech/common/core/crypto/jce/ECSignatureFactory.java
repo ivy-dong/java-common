@@ -1,4 +1,4 @@
-package com.arxanfintech.core.crypto.jce;
+package com.arxanfintech.common.core.crypto.jce;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;

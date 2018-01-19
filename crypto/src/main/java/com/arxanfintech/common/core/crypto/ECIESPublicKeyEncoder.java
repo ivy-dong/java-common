@@ -1,6 +1,6 @@
-package com.arxanfintech.core.crypto;
+package com.arxanfintech.common.core.crypto;
 
-import com.arxanfintech.util.ByteUtil;
+import com.arxanfintech.common.util.ByteUtil;
 import org.spongycastle.crypto.KeyEncoder;
 import org.spongycastle.crypto.params.AsymmetricKeyParameter;
 import org.spongycastle.crypto.params.ECPublicKeyParameters;

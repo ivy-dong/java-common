@@ -15,7 +15,7 @@ limitations under the License.
 *******************************************************************************/
 
 
-package com.arxanfintech.util;
+package com.arxanfintech.common.util;
 
 import java.util.Properties;
 

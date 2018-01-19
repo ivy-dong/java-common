@@ -1,4 +1,4 @@
-package com.arxanfintech.core.crypto;
+package com.arxanfintech.common.core.crypto;
 
 import java.math.BigInteger;
 

@@ -1,9 +1,9 @@
-package com.arxanfintech.core.crypto;
+package com.arxanfintech.common.core.crypto;
 
-import com.arxanfintech.core.crypto.cryptohash.Keccak256;
-import com.arxanfintech.core.crypto.cryptohash.Keccak512;
-import com.arxanfintech.util.RLP;
-import com.arxanfintech.util.Utils;
+import com.arxanfintech.common.core.crypto.cryptohash.Keccak256;
+import com.arxanfintech.common.core.crypto.cryptohash.Keccak512;
+import com.arxanfintech.common.util.RLP;
+import com.arxanfintech.common.util.Utils;
 import org.spongycastle.crypto.Digest;
 import org.spongycastle.crypto.digests.RIPEMD160Digest;
 import org.spongycastle.util.encoders.Hex;
@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 import static java.util.Arrays.copyOfRange;
-import static com.arxanfintech.util.ByteUtil.EMPTY_BYTE_ARRAY;
+import static com.arxanfintech.common.util.ByteUtil.EMPTY_BYTE_ARRAY;
 
 public class HashUtil {
 

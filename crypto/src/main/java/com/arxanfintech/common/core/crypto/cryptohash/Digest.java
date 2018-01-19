@@ -1,4 +1,4 @@
-package com.arxanfintech.core.crypto.cryptohash;
+package com.arxanfintech.common.core.crypto.cryptohash;
 
 public interface Digest {
 

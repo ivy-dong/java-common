@@ -1,6 +1,6 @@
-package com.arxanfintech.core.crypto;
+package com.arxanfintech.common.core.crypto;
 
-import com.arxanfintech.core.ConcatKDFBytesGenerator;
+import com.arxanfintech.common.core.ConcatKDFBytesGenerator;
 import org.spongycastle.crypto.AsymmetricCipherKeyPair;
 import org.spongycastle.crypto.BufferedBlockCipher;
 import org.spongycastle.crypto.InvalidCipherTextException;
@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import static com.arxanfintech.core.crypto.ECKey.CURVE;
+import static com.arxanfintech.common.core.crypto.ECKey.CURVE;
 
 public class ECIESCoder {
 

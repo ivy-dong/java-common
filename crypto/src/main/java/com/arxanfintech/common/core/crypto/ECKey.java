@@ -1,4 +1,4 @@
-package com.arxanfintech.core.crypto;
+package com.arxanfintech.common.core.crypto;
 /**
  * Copyright 2011 Google Inc.
  *
@@ -15,12 +15,12 @@ package com.arxanfintech.core.crypto;
  * limitations under the License.
  */
 
-import com.arxanfintech.core.crypto.jce.ECAlgorithmParameters;
-import com.arxanfintech.core.crypto.jce.ECKeyAgreement;
-import com.arxanfintech.core.crypto.jce.ECKeyFactory;
-import com.arxanfintech.core.crypto.jce.ECKeyPairGenerator;
-import com.arxanfintech.core.crypto.jce.ECSignatureFactory;
-import com.arxanfintech.core.crypto.jce.SpongyCastleProvider;
+import com.arxanfintech.common.core.crypto.jce.ECAlgorithmParameters;
+import com.arxanfintech.common.core.crypto.jce.ECKeyAgreement;
+import com.arxanfintech.common.core.crypto.jce.ECKeyFactory;
+import com.arxanfintech.common.core.crypto.jce.ECKeyPairGenerator;
+import com.arxanfintech.common.core.crypto.jce.ECSignatureFactory;
+import com.arxanfintech.common.core.crypto.jce.SpongyCastleProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -76,9 +76,9 @@ import java.util.Arrays;
 
 import javax.crypto.KeyAgreement;
 
-import static com.arxanfintech.util.BIUtil.isLessThan;
-import static com.arxanfintech.util.BIUtil.isMoreThan;
-import static com.arxanfintech.util.ByteUtil.bigIntegerToBytes;
+import static com.arxanfintech.common.util.BIUtil.isLessThan;
+import static com.arxanfintech.common.util.BIUtil.isMoreThan;
+import static com.arxanfintech.common.util.ByteUtil.bigIntegerToBytes;
 
 public class ECKey implements Serializable {
     private static final Logger logger = LoggerFactory.getLogger(ECKey.class);

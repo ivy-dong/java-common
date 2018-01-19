@@ -15,11 +15,11 @@ limitations under the License.
 *******************************************************************************/
 
 
-package com.arxanfintech.util;
+package com.arxanfintech.common.util;
 
-import static com.arxanfintech.util.ByteUtil.intToBytesNoLeadZeroes;
-import static com.arxanfintech.util.ByteUtil.isNullOrZeroArray;
-import static com.arxanfintech.util.ByteUtil.isSingleZero;
+import static com.arxanfintech.common.util.ByteUtil.intToBytesNoLeadZeroes;
+import static com.arxanfintech.common.util.ByteUtil.isNullOrZeroArray;
+import static com.arxanfintech.common.util.ByteUtil.isSingleZero;
 import static org.spongycastle.util.Arrays.concatenate;
 import static org.spongycastle.util.BigIntegers.asUnsignedByteArray;
 

@@ -1,4 +1,4 @@
-package com.arxanfintech.core.crypto.jce;
+package com.arxanfintech.common.core.crypto.jce;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.security.KeyPair;
