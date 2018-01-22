@@ -14,24 +14,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 *******************************************************************************/
 
-package com.arxanfintech.common.rest;
+package com.arxanfintech.common.crypto.core;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.arxanfintech.common.util.ByteUtil;
+import org.spongycastle.crypto.KeyEncoder;
+import org.spongycastle.crypto.params.AsymmetricKeyParameter;
+import org.spongycastle.crypto.params.ECPublicKeyParameters;
 
-import org.apache.http.Header;
-import org.apache.http.NameValuePair;
-
-import com.arxanfintech.common.rest.Api.Config;
-
-/**
- * 
- * Request is used to help build up a request
- *
- */
-public class Request {
-    public Config config;
-    public String url;
-    public List<NameValuePair> body = new ArrayList<NameValuePair>();
-    public Header header;
+public class ECIESPublicKeyEncoder implements KeyEncoder {
+    @Override
+    public byte[] getEncoded(AsymmetricKeyParameter asymmetricKeyParameter) {
+        return ((ECPublicKeyParameters) asymmetricKeyParameter).getQ().getEncoded(false);
+    }
 }

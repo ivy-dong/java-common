@@ -23,6 +23,8 @@ import java.util.Arrays;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.arxanfintech.common.util.ByteUtils;
+
 /**
  * A Hash identifies objects, that is blocks and transactions, in the ledger.
  * Technically it is a double SHA256 digest of the object's content.

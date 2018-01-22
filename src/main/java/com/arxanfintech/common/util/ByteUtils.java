@@ -14,10 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 *******************************************************************************/
 
-package com.arxanfintech.common.crypto;
+package com.arxanfintech.common.util;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
+
+import com.arxanfintech.common.crypto.Hash;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;

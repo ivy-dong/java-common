@@ -14,24 +14,26 @@ See the License for the specific language governing permissions and
 limitations under the License.
 *******************************************************************************/
 
-package com.arxanfintech.common.rest;
+package com.arxanfintech.common.crypto.core.cryptohash;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Keccak512 extends KeccakCore {
 
-import org.apache.http.Header;
-import org.apache.http.NameValuePair;
+	/**
+	 * Create the engine.
+	 */
+	public Keccak512()
+	{
+	}
 
-import com.arxanfintech.common.rest.Api.Config;
+	/** @see Digest */
+	public Digest copy()
+	{
+		return copyState(new Keccak512());
+	}
 
-/**
- * 
- * Request is used to help build up a request
- *
- */
-public class Request {
-    public Config config;
-    public String url;
-    public List<NameValuePair> body = new ArrayList<NameValuePair>();
-    public Header header;
+	/** @see Digest */
+	public int getDigestLength()
+	{
+		return 64;
+	}
 }

@@ -1,4 +1,20 @@
-package com.arxanfintech.common.core.crypto.cryptohash;
+/*******************************************************************************
+Copyright ArxanFintech Technology Ltd. 2018 All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+                 http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*******************************************************************************/
+
+package com.arxanfintech.common.crypto.core.cryptohash;
 
 abstract class KeccakCore extends DigestEngine {
 
@@ -65,13 +81,13 @@ abstract class KeccakCore extends DigestEngine {
 			| ((buf[off + 7] & 0xFFL) << 56);
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.DigestEngine */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.DigestEngine */
 	protected void engineReset()
 	{
 		doReset();
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.DigestEngine */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.DigestEngine */
 	protected void processBlock(byte[] data)
 	{
 		/* Input block */
@@ -481,7 +497,7 @@ abstract class KeccakCore extends DigestEngine {
 		}
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.DigestEngine */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.DigestEngine */
 	protected void doPadding(byte[] out, int off)
 	{
 		int ptr = flush();
@@ -507,7 +523,7 @@ abstract class KeccakCore extends DigestEngine {
 		System.arraycopy(tmpOut, 0, out, off, dlen);
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.DigestEngine */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.DigestEngine */
 	protected void doInit()
 	{
 		A = new long[25];
@@ -515,7 +531,7 @@ abstract class KeccakCore extends DigestEngine {
 		doReset();
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest */
 	public int getBlockLength()
 	{
 		return 200 - 2 * getDigestLength();
@@ -533,14 +549,14 @@ abstract class KeccakCore extends DigestEngine {
 		A[20] = 0xFFFFFFFFFFFFFFFFL;
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.DigestEngine */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.DigestEngine */
 	protected Digest copyState(KeccakCore dst)
 	{
 		System.arraycopy(A, 0, dst.A, 0, 25);
 		return super.copyState(dst);
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest */
 	public String toString()
 	{
 		return "Keccak-" + (getDigestLength() << 3);

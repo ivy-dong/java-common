@@ -20,6 +20,8 @@ package com.arxanfintech.common.crypto;
 import java.math.BigInteger;
 import java.util.Arrays;
 
+import com.arxanfintech.common.util.ByteUtils;
+
 /**
  * An EC public Key suitable for verifying a signature created with the corresponding EC PrivateKey
  *

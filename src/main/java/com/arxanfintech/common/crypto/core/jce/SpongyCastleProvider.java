@@ -14,24 +14,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 *******************************************************************************/
 
-package com.arxanfintech.common.rest;
+package com.arxanfintech.common.crypto.core.jce;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.spongycastle.jce.provider.BouncyCastleProvider;
 
-import org.apache.http.Header;
-import org.apache.http.NameValuePair;
+import java.security.Provider;
 
-import com.arxanfintech.common.rest.Api.Config;
+public final class SpongyCastleProvider {
 
-/**
- * 
- * Request is used to help build up a request
- *
- */
-public class Request {
-    public Config config;
-    public String url;
-    public List<NameValuePair> body = new ArrayList<NameValuePair>();
-    public Header header;
+  private static class Holder {
+    private static final Provider INSTANCE = new BouncyCastleProvider();
+  }
+
+  public static Provider getInstance() {
+    return Holder.INSTANCE;
+  }
 }

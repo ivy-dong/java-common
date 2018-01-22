@@ -1,6 +1,21 @@
-package com.arxanfintech.common.core.crypto;
+/*******************************************************************************
+Copyright ArxanFintech Technology Ltd. 2018 All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+                 http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*******************************************************************************/
+
+package com.arxanfintech.common.crypto.core;
 /**
- * Copyright 2011 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +30,14 @@ package com.arxanfintech.common.core.crypto;
  * limitations under the License.
  */
 
-import com.arxanfintech.common.core.crypto.jce.ECAlgorithmParameters;
-import com.arxanfintech.common.core.crypto.jce.ECKeyAgreement;
-import com.arxanfintech.common.core.crypto.jce.ECKeyFactory;
-import com.arxanfintech.common.core.crypto.jce.ECKeyPairGenerator;
-import com.arxanfintech.common.core.crypto.jce.ECSignatureFactory;
-import com.arxanfintech.common.core.crypto.jce.SpongyCastleProvider;
+import com.arxanfintech.common.crypto.core.jce.ECAlgorithmParameters;
+import com.arxanfintech.common.crypto.core.jce.ECKeyAgreement;
+import com.arxanfintech.common.crypto.core.jce.ECKeyFactory;
+import com.arxanfintech.common.crypto.core.jce.ECKeyPairGenerator;
+import com.arxanfintech.common.crypto.core.jce.ECSignatureFactory;
+import com.arxanfintech.common.crypto.core.jce.SpongyCastleProvider;
+import com.arxanfintech.common.util.HashUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

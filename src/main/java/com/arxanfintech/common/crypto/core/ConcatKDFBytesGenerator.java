@@ -15,7 +15,7 @@ limitations under the License.
 *******************************************************************************/
 
 
-package com.arxanfintech.common.core;
+package com.arxanfintech.common.crypto.core;
 
 import org.spongycastle.crypto.DataLengthException;
 import org.spongycastle.crypto.DerivationParameters;

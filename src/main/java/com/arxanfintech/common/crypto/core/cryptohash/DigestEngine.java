@@ -1,4 +1,20 @@
-package com.arxanfintech.common.core.crypto.cryptohash;
+/*******************************************************************************
+Copyright ArxanFintech Technology Ltd. 2018 All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+                 http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*******************************************************************************/
+
+package com.arxanfintech.common.crypto.core.cryptohash;
 
 public abstract class DigestEngine implements Digest {
 
@@ -60,7 +76,7 @@ public abstract class DigestEngine implements Digest {
 		}
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest */
 	public byte[] digest()
 	{
 		adjustDigestLen();
@@ -69,14 +85,14 @@ public abstract class DigestEngine implements Digest {
 		return result;
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest */
 	public byte[] digest(byte[] input)
 	{
 		update(input, 0, input.length);
 		return digest();
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest */
 	public int digest(byte[] buf, int offset, int len)
 	{
 		adjustDigestLen();
@@ -92,7 +108,7 @@ public abstract class DigestEngine implements Digest {
 		}
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest */
 	public void reset()
 	{
 		engineReset();
@@ -100,7 +116,7 @@ public abstract class DigestEngine implements Digest {
 		blockCount = 0;
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest */
 	public void update(byte input)
 	{
 		inputBuf[inputLen ++] = (byte)input;
@@ -111,13 +127,13 @@ public abstract class DigestEngine implements Digest {
 		}
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest */
 	public void update(byte[] input)
 	{
 		update(input, 0, input.length);
 	}
 
-	/** @see com.arxanfintech.common.core.crypto.cryptohash.Digest */
+	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest */
 	public void update(byte[] input, int offset, int len)
 	{
 		while (len > 0) {
