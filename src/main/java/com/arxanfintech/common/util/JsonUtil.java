@@ -13,27 +13,26 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 *******************************************************************************/
+package com.arxanfintech.common.util;
 
-package com.arxanfintech.common.rest;
-
-import java.util.ArrayList;
+import com.alibaba.fastjson.JSON;
 import java.util.List;
-
 import org.apache.http.Header;
-import org.apache.http.NameValuePair;
+import java.util.ArrayList;
 
-import com.arxanfintech.common.rest.Config;
-import com.arxanfintech.common.crypto.Crypto;
-
-/**
- * 
- * Request is used to help build up a request
- *
- */
-public class Request {
-    public Config config;
-    public String url;
-    public List<NameValuePair> body = new ArrayList<NameValuePair>();
-    public Header[] headers;
-    public Crypto crypto;
+public class JsonUtil {
+    /**
+     * parse json data to class
+     * 
+     * @param jsonData
+     *            string json data
+     * @param type
+     *            class
+     * @return parse class result
+     * @throws Exception
+     */
+    public static <T> T parseJsonToClass(String jsonData, Class<T> type) throws Exception {
+        T result = JSON.parseObject(jsonData, type);
+        return result;
+    }
 }

@@ -13,27 +13,16 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 *******************************************************************************/
-
-package com.arxanfintech.common.rest;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.Header;
-import org.apache.http.NameValuePair;
-
-import com.arxanfintech.common.rest.Config;
-import com.arxanfintech.common.crypto.Crypto;
+package com.arxanfintech.common.structs;
 
 /**
  * 
- * Request is used to help build up a request
+ * PublicKey store public key and its information
  *
  */
-public class Request {
-    public Config config;
-    public String url;
-    public List<NameValuePair> body = new ArrayList<NameValuePair>();
-    public Header[] headers;
-    public Crypto crypto;
+public class PublicKey {
+    public String Usage;
+    public String KeyType;
+    public byte[] PublicKeyData;
+
 }

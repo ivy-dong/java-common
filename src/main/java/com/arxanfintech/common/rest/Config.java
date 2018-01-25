@@ -16,24 +16,15 @@ limitations under the License.
 
 package com.arxanfintech.common.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.Header;
-import org.apache.http.NameValuePair;
-
-import com.arxanfintech.common.rest.Config;
-import com.arxanfintech.common.crypto.Crypto;
-
 /**
  * 
- * Request is used to help build up a request
+ * Config is used to configure the creation of a client
  *
  */
-public class Request {
-    public Config config;
-    public String url;
-    public List<NameValuePair> body = new ArrayList<NameValuePair>();
-    public Header[] headers;
-    public Crypto crypto;
+public class Config {
+    // Address is the address of the Rest server
+    public String Address;
+
+    // ApiKey is the access key for ACL access api
+    public String ApiKey;
 }

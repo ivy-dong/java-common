@@ -50,7 +50,7 @@ public class ApiTest extends TestCase {
      */
     public void testGet() {
         Api api = new Api();
-        api.NewHttpClien();
+        api.NewHttpClient();
         Request get = new Request();
         get.url = "http://httpbin.org/get";
         try {
@@ -66,7 +66,7 @@ public class ApiTest extends TestCase {
      */
     public void testPost() {
         Api api = new Api();
-        api.NewHttpClien();
+        api.NewHttpClient();
         Request post = new Request();
         post.url = "http://httpbin.org/post";
         post.body.add(new BasicNameValuePair("username", "vip"));
