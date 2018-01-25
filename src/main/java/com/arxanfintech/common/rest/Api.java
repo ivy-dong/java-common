@@ -37,6 +37,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import com.arxanfintech.common.crypto.Crypto;
+
 /**
  * 
  * Rest api Rest api for java common
@@ -48,23 +50,10 @@ public class Api {
 
     /**
      * 
-     * Config is used to configure the creation of a client
-     *
-     */
-    public class Config {
-        // Address is the address of the Rest server
-        public String Address;
-
-        // ApiKey is the access key for ACL access api
-        public String ApiKey;
-    }
-
-    /**
-     * 
      * NewHttpClient returns an CloseableHttpClient
      * 
      */
-    public CloseableHttpClient NewHttpClien() {
+    public CloseableHttpClient NewHttpClient() {
         if (httpclient == null) {
             httpclient = HttpClients.createDefault();
         }
@@ -82,8 +71,10 @@ public class Api {
     public void DoGet(Request request) throws Exception {
         try {
             HttpGet httpGet = new HttpGet(request.url);
-            if (request.header == null) {
-                httpGet.setHeader(request.header);
+            if (request.headers != null) {
+                for (int i = 0; i < request.headers.length; i++) {
+                    httpGet.setHeader(request.headers[i]);
+                }
             }
             CloseableHttpResponse response1 = httpclient.execute(httpGet);
 
@@ -112,17 +103,24 @@ public class Api {
     public void DoPost(Request request) throws Exception {
         try {
             HttpPost httpPost = new HttpPost(request.url);
+            if (request.headers != null) {
+                for (int i = 0; i < request.headers.length; i++) {
+                    httpPost.setHeader(request.headers[i]);
+                }
+            }
             httpPost.setEntity(new UrlEncodedFormEntity(request.body));
-            CloseableHttpResponse response2 = httpclient.execute(httpPost);
+            CloseableHttpResponse response = httpclient.execute(httpPost);
 
             try {
-                System.out.println(response2.getStatusLine());
-                HttpEntity entity2 = response2.getEntity();
+                System.out.println(EntityUtils.toString(response.getEntity(), "UTF-8"));
+                HttpEntity entity2 = response.getEntity();
 
                 EntityUtils.consume(entity2);
             } finally {
-                response2.close();
+                response.close();
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         } finally {
             httpclient.close();
         }
