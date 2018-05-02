@@ -20,6 +20,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import com.alibaba.fastjson.JSONObject;
 import com.arxanfintech.common.rest.Api;
 import com.arxanfintech.common.rest.Request;
 import org.apache.http.message.BasicNameValuePair;
@@ -49,11 +50,12 @@ public class ApiTest extends TestCase {
      * Rigourous testGet :-)
      */
     public void testGet() {
-        Api api = new Api();
-        api.NewHttpClient();
-        Request get = new Request();
-        get.url = "http://httpbin.org/get";
         try {
+            Api api = new Api();
+            api.NewHttpClient();
+            Request get = new Request();
+            get.url = "http://httpbin.org/get";
+
             api.DoGet(get);
             assertTrue(true);
         } catch (Exception e) {
@@ -65,13 +67,13 @@ public class ApiTest extends TestCase {
      * Rigourous testPost :-)
      */
     public void testPost() {
-        Api api = new Api();
-        api.NewHttpClient();
-        Request post = new Request();
-        post.url = "http://httpbin.org/post";
-        post.body.add(new BasicNameValuePair("username", "vip"));
-        post.body.add(new BasicNameValuePair("password", "secret"));
         try {
+            Api api = new Api();
+            api.NewHttpClient();
+            Request post = new Request();
+            post.url = "http://httpbin.org/post";
+            post.body = JSONObject.parseObject("{\"username\":\"vip\",\"password\":\"secret\"}");
+
             api.DoPost(post);
             assertTrue(true);
         } catch (Exception e) {
