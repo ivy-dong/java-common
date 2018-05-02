@@ -21,10 +21,13 @@ package com.arxanfintech.common.rest;
  * Config is used to configure the creation of a client
  *
  */
-public class Config {
+public class Client {
     // Address is the address of the Rest server
     public String Address;
 
     // ApiKey is the access key for ACL access api
     public String ApiKey;
+    
+    //Cert Path
+    public String CertPath;
 }

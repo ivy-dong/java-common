@@ -22,8 +22,11 @@ import java.util.List;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
 
-import com.arxanfintech.common.rest.Config;
+import com.arxanfintech.common.rest.Client;
 import com.arxanfintech.common.crypto.Crypto;
+import com.alibaba.fastjson.JSON;
+
+import com.alibaba.fastjson.JSONObject;
 
 /**
  * 
@@ -31,9 +34,9 @@ import com.arxanfintech.common.crypto.Crypto;
  *
  */
 public class Request {
-    public Config config;
+    public Client client;
     public String url;
-    public List<NameValuePair> body = new ArrayList<NameValuePair>();
-    public Header[] headers;
     public Crypto crypto;
+    public JSONObject body;
+    public JSONObject header;
 }
