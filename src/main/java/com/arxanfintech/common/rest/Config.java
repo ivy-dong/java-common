@@ -16,29 +16,15 @@ limitations under the License.
 
 package com.arxanfintech.common.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.Header;
-import org.apache.http.NameValuePair;
-
-
-import com.arxanfintech.common.rest.Client;
-import com.arxanfintech.common.crypto.Crypto;
-import com.alibaba.fastjson.JSON;
-
-import com.alibaba.fastjson.JSONObject;
-
-
 /**
  * 
- * Request is used to help build up a request
+ * Config is used to configure the creation of a client
  *
  */
-public class Request {
-    public Client client;
-    public String url;
-    public Crypto crypto;
-    public JSONObject body;
-    public JSONObject header;
+public class Config {
+    // Address is the address of the Rest server
+    public String Address;
+
+    // ApiKey is the access key for ACL access api
+    public String ApiKey;
 }
