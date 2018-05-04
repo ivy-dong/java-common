@@ -14,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 *******************************************************************************/
 
-
 package com.arxanfintech.common.crypto;
 
 import java.math.BigInteger;
@@ -23,7 +22,8 @@ import java.util.Arrays;
 import com.arxanfintech.common.util.ByteUtils;
 
 /**
- * An EC public Key suitable for verifying a signature created with the corresponding EC PrivateKey
+ * An EC public Key suitable for verifying a signature created with the
+ * corresponding EC PrivateKey
  *
  * @see PrivateKey
  */
@@ -33,6 +33,11 @@ public class PublicKey implements Key {
 
     /**
      * Create from uncompressed binary representation
+     * 
+     * @param pub
+     *            pub
+     * @param crypto
+     *            crypto
      */
     public PublicKey(byte[] pub, Cryptography crypto) {
         this.pub = pub;
@@ -51,8 +56,10 @@ public class PublicKey implements Key {
     /**
      * verify a signature created with the private counterpart of this key
      *
-     * @param hash      arbitrary data
-     * @param signature signature
+     * @param hash
+     *            arbitrary data
+     * @param signature
+     *            signature
      * @return true if valid
      */
     public boolean verify(byte[] hash, byte[] signature) {

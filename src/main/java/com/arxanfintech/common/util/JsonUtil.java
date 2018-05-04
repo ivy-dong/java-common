@@ -21,16 +21,7 @@ import org.apache.http.Header;
 import java.util.ArrayList;
 
 public class JsonUtil {
-    /**
-     * parse json data to class
-     * 
-     * @param jsonData
-     *            string json data
-     * @param type
-     *            class
-     * @return parse class result
-     * @throws Exception
-     */
+
     public static <T> T parseJsonToClass(String jsonData, Class<T> type) throws Exception {
         T result = JSON.parseObject(jsonData, type);
         return result;

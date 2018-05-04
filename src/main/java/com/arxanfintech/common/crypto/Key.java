@@ -35,7 +35,7 @@ public interface Key {
      * Due to a homomorphic property of EC one may compute the offset key of
      * both private and public keys independently such that they build a valid new pair.
      *
-     * @param offset
+     * @param offset offset
      * @return a key derived of this with an offset.
      */
     Key offsetKey(BigInteger offset);

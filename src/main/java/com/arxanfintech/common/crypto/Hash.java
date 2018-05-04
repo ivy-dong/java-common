@@ -29,8 +29,6 @@ import com.arxanfintech.common.util.ByteUtils;
  * A Hash identifies objects, that is blocks and transactions, in the ledger.
  * Technically it is a double SHA256 digest of the object's content.
  *
- * @see TID
- * @see BID
  */
 public class Hash {
     public static final Hash INVALID = Hash.createFromSafeArray(new byte[32]);
@@ -70,8 +68,6 @@ public class Hash {
      *
      * @param hash - a 32 byte digest
      * @param safe - a dummy paramater to distinguish this unsafe constructor from the safe one.
-     * @see TID
-     * @see BID
      */
     protected Hash(byte[] hash, boolean safe) {
         bytes = hash;
@@ -189,7 +185,6 @@ public class Hash {
      * Convert a Hash into a big positive integer. See HyperledgerHeader for its use for proof-of-work.
      *
      * @return Hash as big positive integer
-     * @see HyperledgerHeader
      */
     public BigInteger toBigInteger() {
         return new BigInteger(1, ByteUtils.reverse(toByteArray()));

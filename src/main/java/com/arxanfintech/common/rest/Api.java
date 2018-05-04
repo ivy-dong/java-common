@@ -72,11 +72,6 @@ public class Api {
 
     public CloseableHttpClient httpclient;
 
-    /**
-     * 
-     * NewHttpClient returns an CloseableHttpClient
-     * 
-     */
     public CloseableHttpClient NewHttpClient() throws Exception {
         if (httpclient == null) {
             SSLContext sslcontext = SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build();
@@ -87,15 +82,6 @@ public class Api {
         return httpclient;
     }
 
-    /**
-     * httpclient get
-     *
-     * @param request
-     *            http get info
-     * @return
-     * @throws Exception
-     *             exception
-     */
     public String DoGet(Request request) throws Exception {
         try {
             SSLContext sslcontext = SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build();
@@ -125,9 +111,7 @@ public class Api {
      *
      * @param request
      *            http post info
-     * @return
-     * @throws Exception
-     *             exception
+     * @return response data error return null
      */
     public String DoPost(Request request) {
         try {
@@ -161,9 +145,7 @@ public class Api {
      *
      * @param request
      *            http post info
-     * @return
-     * @throws Exception
-     *             exception
+     * @return response data error return null
      */
     public String DoPut(Request request) {
         try {

@@ -45,6 +45,7 @@ public class CertTool {
 	 * @exception CertificateException
 	 *                if the filen does not contain a correct certificate.
 	 * @throws NoSuchProviderException
+	 *                NoSuchProviderException
 	 */
 	public static X509Certificate getCertfromPEM(String certFile) throws IOException, CertificateException, NoSuchProviderException {
 		InputStream inStrm = new FileInputStream(certFile);
@@ -64,6 +65,7 @@ public class CertTool {
 	 * @exception CertificateException
 	 *                if the array does not contain a correct certificate.
 	 * @throws NoSuchProviderException
+	 *                NoSuchProviderException
 	 */
 	public static X509Certificate getCertfromPEM(byte[] pemBytes) throws IOException, CertificateException, NoSuchProviderException {
 		InputStream inStrm = new java.io.ByteArrayInputStream(pemBytes);
@@ -75,7 +77,7 @@ public class CertTool {
 	 * Reads a certificate in PEM-format from an InputStream. The stream may
 	 * contain other things, the first certificate in the stream is read.
 	 *
-	 * @param certFile
+	 * @param certstream
 	 *            the input stream containing the certificate in PEM-format
 	 * @return X509Certificate
 	 * @exception IOException
@@ -83,6 +85,7 @@ public class CertTool {
 	 * @exception CertificateException
 	 *                if the stream does not contain a correct certificate.
 	 * @throws NoSuchProviderException
+	 *                NoSuchProviderException
 	 */
 	public static X509Certificate getCertfromPEM(InputStream certstream) throws IOException, CertificateException, NoSuchProviderException {
 
@@ -111,7 +114,7 @@ public class CertTool {
 	} // getCertfromPEM
 
 	/**
-	 * @param args
+	 * @param args main args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

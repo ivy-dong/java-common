@@ -150,4 +150,29 @@
 			</plugin>
 		</plugins>
 	</build>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<url>https://github.com/ivy-dong/java-common</url>
+		<connection>https://github.com/ivy-dong/java-common.git</connection>
+		<developerConnection>https://github.com/ivy-dong/java-common</developerConnection>
+	</scm>
+	<developers>
+		<developer>
+			<name>dongyan</name>
+			<email>dongyan@arxanfintech.com</email>
+			<url>https://github.com/ivy-dong/java-common</url>
+		</developer>
+	</developers>
 </project>

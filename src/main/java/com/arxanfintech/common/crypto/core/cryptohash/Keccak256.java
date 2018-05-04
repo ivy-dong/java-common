@@ -18,22 +18,19 @@ package com.arxanfintech.common.crypto.core.cryptohash;
 
 public class Keccak256 extends KeccakCore {
 
-	/**
-	 * Create the engine.
-	 */
-	public Keccak256()
-	{
-	}
+    /**
+     * Create the engine.
+     */
+    public Keccak256() {
+    }
 
-	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest */
-	public Digest copy()
-	{
-		return copyState(new Keccak256());
-	}
+    // @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest
+    public Digest copy() {
+        return copyState(new Keccak256());
+    }
 
-	/** @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest */
-	public int getDigestLength()
-	{
-		return 32;
-	}
+    // @see com.arxanfintech.common.crypto.core.cryptohash.crypto.cryptohash.Digest
+    public int getDigestLength() {
+        return 32;
+    }
 }
