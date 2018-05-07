@@ -4,7 +4,7 @@
 
 	<groupId>com.arxanfintech</groupId>
 	<artifactId>java-common</artifactId>
-	<version>0.1-SNAPSHOT</version>
+	<version>1.5.1</version>
 	<packaging>jar</packaging>
 
 	<name>java-common</name>
