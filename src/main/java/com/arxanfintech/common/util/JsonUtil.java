@@ -13,30 +13,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 *******************************************************************************/
+package com.arxanfintech.common.util;
 
-package com.arxanfintech.common.crypto;
+import com.alibaba.fastjson.JSON;
+import java.util.List;
+import org.apache.http.Header;
+import java.util.ArrayList;
 
-import java.math.BigInteger;
+public class JsonUtil {
 
-/**
- * An ECC public or private key
- */
-public interface Key {
-
-    /**
-     * Safe access to the key's internal representation
-     *
-     * @return a copy of the key's internal representation
-     */
-    byte[] toByteArray();
-
-    /**
-     * Return a key computable for this key with an offset.
-     * Due to a homomorphic property of EC one may compute the offset key of
-     * both private and public keys independently such that they build a valid new pair.
-     *
-     * @param offset offset
-     * @return a key derived of this with an offset.
-     */
-    Key offsetKey(BigInteger offset);
+    public static <T> T parseJsonToClass(String jsonData, Class<T> type) throws Exception {
+        T result = JSON.parseObject(jsonData, type);
+        return result;
+    }
 }

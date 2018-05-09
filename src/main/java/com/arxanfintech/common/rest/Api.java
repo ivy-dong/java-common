@@ -36,6 +36,32 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import java.io.FileInputStream;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.arxanfintech.common.crypto.Crypto;
+import java.io.FileInputStream;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.net.ssl.SSLContext;
+
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.ssl.SSLContexts;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.alibaba.fastjson.JSON;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+
+import com.alibaba.fastjson.JSONObject;
+
+import com.arxanfintech.common.crypto.Crypto;
 
 /**
  * 
@@ -46,59 +72,38 @@ public class Api {
 
     public CloseableHttpClient httpclient;
 
-    /**
-     * 
-     * Config is used to configure the creation of a client
-     *
-     */
-    public class Config {
-        // Address is the address of the Rest server
-        public String Address;
-
-        // ApiKey is the access key for ACL access api
-        public String ApiKey;
-    }
-
-    /**
-     * 
-     * NewHttpClient returns an CloseableHttpClient
-     * 
-     */
-    public CloseableHttpClient NewHttpClien() {
+    public CloseableHttpClient NewHttpClient() throws Exception {
         if (httpclient == null) {
-            httpclient = HttpClients.createDefault();
+            SSLContext sslcontext = SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build();
+
+            SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext);
+            CloseableHttpClient httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
         }
         return httpclient;
     }
 
-    /**
-     * httpclient get
-     *
-     * @param request
-     *            http get info
-     * @throws Exception
-     *             exception
-     */
-    public void DoGet(Request request) throws Exception {
+    public String DoGet(Request request) throws Exception {
         try {
-            HttpGet httpGet = new HttpGet(request.url);
-            if (request.header == null) {
-                httpGet.setHeader(request.header);
-            }
-            CloseableHttpResponse response1 = httpclient.execute(httpGet);
+            SSLContext sslcontext = SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build();
 
-            try {
-                System.out.println(response1.getStatusLine());
-                HttpEntity entity1 = response1.getEntity();
-                // do something useful with the response body
-                // and ensure it is fully consumed
-                EntityUtils.consume(entity1);
-            } finally {
-                response1.close();
-            }
-        } finally {
-            httpclient.close();
+            SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext);
+            CloseableHttpClient httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
+            Unirest.setHttpClient(httpclient);
+
+            HttpResponse<String> res = Unirest.get(request.url)
+                    .header("Callback-Url", request.header.getString("Callback-Url"))
+                    .header("Bc-Invoke-Mode", request.header.getString("Bc-Invoke-Mode"))
+                    .header("API-Key", request.client.ApiKey).asString();
+
+            String respData = res.getBody();
+
+            System.out.println("Got remote cipher response: " + respData);
+            String oriData = request.crypto.decryptAndVerify(respData.getBytes());
+            return oriData;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+        return null;
     }
 
     /**
@@ -106,25 +111,66 @@ public class Api {
      *
      * @param request
      *            http post info
-     * @throws Exception
-     *             exception
+     * @return response data error return null
      */
-    public void DoPost(Request request) throws Exception {
+    public String DoPost(Request request) {
         try {
-            HttpPost httpPost = new HttpPost(request.url);
-            httpPost.setEntity(new UrlEncodedFormEntity(request.body));
-            CloseableHttpResponse response2 = httpclient.execute(httpPost);
+            SSLContext sslcontext = SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build();
 
-            try {
-                System.out.println(response2.getStatusLine());
-                HttpEntity entity2 = response2.getEntity();
+            SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext);
+            CloseableHttpClient httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
+            Unirest.setHttpClient(httpclient);
 
-                EntityUtils.consume(entity2);
-            } finally {
-                response2.close();
-            }
-        } finally {
-            httpclient.close();
+            String buf = request.crypto.signAndEncrypt(request.body.toString().getBytes());
+
+            HttpResponse<String> res = Unirest.post(request.url).header("API-Key", request.client.ApiKey)
+                    .header("Callback-Url", request.header.getString("Callback-Url"))
+                    .header("Bc-Invoke-Mode", request.header.getString("Bc-Invoke-Mode")).body(buf).asString();
+
+            String respData = res.getBody();
+
+            System.out.println("Got remote cipher response: " + respData);
+
+            String oriData = request.crypto.decryptAndVerify(respData.getBytes());
+
+            return oriData;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+        return null;
+    }
+
+    /**
+     * httpclient put
+     *
+     * @param request
+     *            http post info
+     * @return response data error return null
+     */
+    public String DoPut(Request request) {
+        try {
+            SSLContext sslcontext = SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build();
+
+            SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext);
+            CloseableHttpClient httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
+            Unirest.setHttpClient(httpclient);
+
+            String buf = request.crypto.signAndEncrypt(request.body.toString().getBytes());
+
+            HttpResponse<String> res = Unirest.put(request.url).header("API-Key", request.client.ApiKey)
+                    .header("Callback-Url", request.header.getString("Callback-Url"))
+                    .header("Bc-Invoke-Mode", request.header.getString("Bc-Invoke-Mode")).body(buf).asString();
+
+            String respData = res.getBody();
+
+            System.out.println("Got remote cipher response: " + respData);
+
+            String oriData = request.crypto.decryptAndVerify(respData.getBytes());
+
+            return oriData;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }

@@ -14,29 +14,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 *******************************************************************************/
 
-package com.arxanfintech.common.crypto;
-
-import java.math.BigInteger;
+package com.arxanfintech.common.rest;
 
 /**
- * An ECC public or private key
+ * 
+ * Config is used to configure the creation of a client
+ *
  */
-public interface Key {
+public class Client {
+    // Address is the address of the Rest server
+    public String Address;
 
-    /**
-     * Safe access to the key's internal representation
-     *
-     * @return a copy of the key's internal representation
-     */
-    byte[] toByteArray();
-
-    /**
-     * Return a key computable for this key with an offset.
-     * Due to a homomorphic property of EC one may compute the offset key of
-     * both private and public keys independently such that they build a valid new pair.
-     *
-     * @param offset offset
-     * @return a key derived of this with an offset.
-     */
-    Key offsetKey(BigInteger offset);
+    // ApiKey is the access key for ACL access api
+    public String ApiKey;
+    
+    //Cert Path
+    public String CertPath;
 }

@@ -41,11 +41,13 @@ public class ByteUtils {
     }
 
     /**
-     * convert a byte array to a human readable base58 string. Base58 is a Bitcoin specific encoding similar to widely used base64 but avoids using characters
+     * convert a byte array to a human readable base58 string. Base58 is a Bitcoin
+     * specific encoding similar to widely used base64 but avoids using characters
      * of similar shape, such as 1 and l or O an 0
      *
      * @param b
-     * @return
+     *            byte data
+     * @return base58 data
      */
     public static String toBase58(byte[] b) {
         if (b.length == 0) {
@@ -76,7 +78,8 @@ public class ByteUtils {
      * Encode in base58 with an added checksum of four bytes.
      *
      * @param b
-     * @return
+     *            byte[] data
+     * @return toBase58WithChecksum
      */
     public static String toBase58WithChecksum(byte[] b) {
         byte[] cs = Hash.hash(b);
@@ -87,11 +90,12 @@ public class ByteUtils {
     }
 
     /**
-     * reverse a byte array in place
-     * WARNING the parameter array is altered and returned.
+     * reverse a byte array in place WARNING the parameter array is altered and
+     * returned.
      *
      * @param data
-     * @return
+     *            ori data
+     * @return reverse data
      */
     public static byte[] reverse(byte[] data) {
         for (int i = 0, j = data.length - 1; i < data.length / 2; i++, j--) {
@@ -106,7 +110,8 @@ public class ByteUtils {
      * convert a byte array to hexadecimal
      *
      * @param data
-     * @return
+     *            byte[] data
+     * @return hex data
      */
     public static String toHex(byte[] data) {
         return new String(Hex.encodeHex(data));
@@ -116,7 +121,8 @@ public class ByteUtils {
      * recreate a byte array from hexadecimal
      *
      * @param hex
-     * @return
+     *            string data
+     * @return byte[] data
      */
     public static byte[] fromHex(String hex) {
         try {

@@ -4,7 +4,7 @@
 
 	<groupId>com.arxanfintech</groupId>
 	<artifactId>java-common</artifactId>
-	<version>0.1-SNAPSHOT</version>
+	<version>1.5.1</version>
 	<packaging>jar</packaging>
 
 	<name>java-common</name>
@@ -37,6 +37,13 @@
 	</properties>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.47</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.mashape.unirest</groupId>
 			<artifactId>unirest-java</artifactId>
@@ -143,4 +150,29 @@
 			</plugin>
 		</plugins>
 	</build>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<url>https://github.com/arxanchain/java-common</url>
+		<connection>https://github.com/arxanchain/java-common.git</connection>
+		<developerConnection>https://github.com/arxanchain/java-common</developerConnection>
+	</scm>
+	<developers>
+		<developer>
+			<name>dongyan</name>
+			<email>dongyan@arxanfintech.com</email>
+			<url>https://github.com/arxanchain/java-common</url>
+		</developer>
+	</developers>
 </project>

@@ -92,15 +92,21 @@ public class ECIESCoder {
     }
 
     /**
-     *  Encryption equivalent to the Crypto++ default ECIES<ECP> settings:
+     *  Encryption equivalent to the Crypto++ default ECIES ECP settings:
      *
-     *  DL_KeyAgreementAlgorithm:        DL_KeyAgreementAlgorithm_DH<struct ECPPoint,struct EnumToType<enum CofactorMultiplicationOption,0> >
-     *  DL_KeyDerivationAlgorithm:       DL_KeyDerivationAlgorithm_P1363<struct ECPPoint,0,class P1363_KDF2<class SHA1> >
-     *  DL_SymmetricEncryptionAlgorithm: DL_EncryptionAlgorithm_Xor<class HMAC<class SHA1>,0>
-     *  DL_PrivateKey:                   DL_Key<ECPPoint>
-     *  DL_PrivateKey_EC<class ECP>
+     *  DL_KeyAgreementAlgorithm:        DL_KeyAgreementAlgorithm_DH struct ECPPoint,struct EnumToType enum CofactorMultiplicationOption,0
+     *  DL_KeyDerivationAlgorithm:       DL_KeyDerivationAlgorithm_P1363 struct ECPPoint,0,class P1363_KDF2 class SHA1
+     *  DL_SymmetricEncryptionAlgorithm: DL_EncryptionAlgorithm_Xor class HMAC class SHA1 ,0 
+     *  DL_PrivateKey:                   DL_Key ECPPoint 
+     *  DL_PrivateKey_EC class ECP 
      *
      *  Used for Whisper V3
+     *  
+     * @param privKey privKey
+     * @param cipher cipher
+     * @return decryptSimple byte[] data
+     * @throws IOException IOException
+     * @throws InvalidCipherTextException InvalidCipherTextException
      */
     public static byte[] decryptSimple(BigInteger privKey, byte[] cipher) throws IOException, InvalidCipherTextException {
         ArxanIESEngine iesEngine = new ArxanIESEngine(
@@ -166,15 +172,25 @@ public class ECIESCoder {
     }
 
     /**
-     *  Encryption equivalent to the Crypto++ default ECIES<ECP> settings:
+     * Encryption equivalent to the Crypto++ default ECIES ECP settings:
      *
-     *  DL_KeyAgreementAlgorithm:        DL_KeyAgreementAlgorithm_DH<struct ECPPoint,struct EnumToType<enum CofactorMultiplicationOption,0> >
-     *  DL_KeyDerivationAlgorithm:       DL_KeyDerivationAlgorithm_P1363<struct ECPPoint,0,class P1363_KDF2<class SHA1> >
-     *  DL_SymmetricEncryptionAlgorithm: DL_EncryptionAlgorithm_Xor<class HMAC<class SHA1>,0>
-     *  DL_PrivateKey:                   DL_Key<ECPPoint>
-     *  DL_PrivateKey_EC<class ECP>
+     *  DL_KeyAgreementAlgorithm:        DL_KeyAgreementAlgorithm_DH struct ECPPoint,struct EnumToType enum CofactorMultiplicationOption,0 
+     *  DL_KeyDerivationAlgorithm:       DL_KeyDerivationAlgorithm_P1363 struct ECPPoint,0,class P1363_KDF2 class SHA1
+     *  DL_SymmetricEncryptionAlgorithm: DL_EncryptionAlgorithm_Xor class HMAC class SHA1,0
+     *  DL_PrivateKey:                   DL_Key ECPPoint
+     *  DL_PrivateKey_EC class ECP
      *
      *  Used for Whisper V3
+     * 
+     * @param pub
+     *            pub
+     * @param plaintext
+     *            plaintext
+     * @return byte[] encryptSimple
+     * @throws IOException
+     *             IOException
+     * @throws InvalidCipherTextException
+     *             InvalidCipherTextException
      */
     public static byte[] encryptSimple(ECPoint pub, byte[] plaintext) throws IOException, InvalidCipherTextException {
         ArxanIESEngine iesEngine = new ArxanIESEngine(
