@@ -164,15 +164,15 @@
 		</license>
 	</licenses>
 	<scm>
-		<url>https://github.com/ivy-dong/java-common</url>
-		<connection>https://github.com/ivy-dong/java-common.git</connection>
-		<developerConnection>https://github.com/ivy-dong/java-common</developerConnection>
+		<url>https://github.com/arxanchain/java-common</url>
+		<connection>https://github.com/arxanchain/java-common.git</connection>
+		<developerConnection>https://github.com/arxanchain/java-common</developerConnection>
 	</scm>
 	<developers>
 		<developer>
 			<name>dongyan</name>
 			<email>dongyan@arxanfintech.com</email>
-			<url>https://github.com/ivy-dong/java-common</url>
+			<url>https://github.com/arxanchain/java-common</url>
 		</developer>
 	</developers>
 </project>
