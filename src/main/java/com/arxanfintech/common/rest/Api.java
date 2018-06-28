@@ -102,6 +102,7 @@ public class Api {
             return oriData;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+
         }
         return null;
     }
@@ -137,7 +138,7 @@ public class Api {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return null;
+        return "";
     }
 
     /**
@@ -171,6 +172,6 @@ public class Api {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return null;
+        return "";
     }
 }
