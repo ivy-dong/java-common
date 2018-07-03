@@ -16,6 +16,9 @@ limitations under the License.
 
 package com.arxanfintech.common.rest;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * 
  * Config is used to configure the creation of a client
@@ -27,7 +30,19 @@ public class Client {
 
     // ApiKey is the access key for ACL access api
     public String ApiKey;
-    
-    //Cert Path
+
+    // Cert Path
     public String CertPath;
+
+    public String Creator;
+    public String Nonce;
+    public String PrivateB64;
+
+    public JSONObject getEntParams() {
+        String strSignParams = "{\"creator\":\"" + this.Creator + "\",\"nonce\":\"" + this.Nonce
+                + "\",\"privateB64\":\"" + this.PrivateB64 + "\"}";
+        JSONObject ent_sign_params = JSON.parseObject(strSignParams);
+
+        return ent_sign_params;
+    }
 }

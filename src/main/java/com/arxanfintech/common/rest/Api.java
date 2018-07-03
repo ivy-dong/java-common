@@ -123,7 +123,7 @@ public class Api {
             Unirest.setHttpClient(httpclient);
 
             String buf = request.crypto.signAndEncrypt(request.body.toString().getBytes());
-
+            System.out.println("after sign and encrypt : " + buf);
             HttpResponse<String> res = Unirest.post(request.url).header("API-Key", request.client.ApiKey)
                     .header("Callback-Url", request.header.getString("Callback-Url"))
                     .header("Bc-Invoke-Mode", request.header.getString("Bc-Invoke-Mode")).body(buf).asString();

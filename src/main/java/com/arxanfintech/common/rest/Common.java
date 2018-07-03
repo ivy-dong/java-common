@@ -30,7 +30,7 @@ public class Common {
                     + nonce + "\", \"signature_value\": \"" + signdata + "\"}}";
 
             JSONObject jsonbody = JSON.parseObject(strdata);
-
+            System.out.println("Build_Body : " + strdata);
             return jsonbody;
         } catch (Exception e) {
             System.out.println("Build_Body error: " + e.getMessage());
