@@ -22,9 +22,9 @@ import com.arxanfintech.common.crypto.ED25519;
 
 public class Common {
     public static JSONObject Build_Body(JSONObject payload, String did, String created, String nonce,
-            String privatekeyBase64) {
+            String privatekeyBase64, String signToolPath) {
         try {
-            String signdata = ED25519.Sign(nonce, privatekeyBase64, did, payload.toJSONString());
+            String signdata = ED25519.Sign(nonce, privatekeyBase64, did, payload.toJSONString(), signToolPath);
             String strdata = "{\"payload\": \"" + payload.toString().replace("\"", "\\\"")
                     + "\", \"signature\": {\"creator\": \"" + did + "\", \"created\": \"" + created + "\",\"nonce\":\""
                     + nonce + "\", \"signature_value\": \"" + signdata + "\"}}";

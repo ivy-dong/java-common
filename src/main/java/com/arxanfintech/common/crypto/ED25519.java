@@ -17,6 +17,7 @@ limitations under the License.
 package com.arxanfintech.common.crypto;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.util.Base64;
 
@@ -36,25 +37,45 @@ public class ED25519 {
      *            base64 payload
      * @return
      */
-    public static String Sign(String nonce, String privatekey, String did, String payload) {
+    public static String Sign(String nonce, String privatekey, String did, String payload, String SignToolPath) {
 
         try {
             Base64.Encoder encoder = Base64.getEncoder();
             String base64_payload = encoder.encodeToString(payload.getBytes("UTF-8"));
 
             String signvalue = "";
-            String cmd = "/Users/yan/eclipse-workspace/java-common/src/main/resources/sign-util" + " -key " + privatekey
-                    + " -nonce " + nonce + " -did " + did + " -data " + base64_payload;
 
+            String cmd = SignToolPath + " -key " + privatekey + " -nonce " + nonce + " -did " + did + " -data "
+                    + base64_payload;
             Runtime runtime = Runtime.getRuntime();
 
             BufferedReader br = new BufferedReader(new InputStreamReader(runtime.exec(cmd).getInputStream()));
 
             signvalue = br.readLine().trim();
 
+            // String FILE_NAME = "sign-util";
+            // System.out.println("MyClass.class.getClassLoder().getResource(FILE_NAME).getPath():"
+            // + ED25519.class.getClassLoader().getResource(FILE_NAME).getPath() + "\r\n"
+            // +
+            // ED25519.class.getClassLoader().getResource("sign-util").getPath().substring(0,
+            // ED25519.class.getClassLoader().getResource("sign-util").getPath().length() -
+            // 9)
+            // + "/../sign2-util");
+            // System.out.println("MyClass.class.getResource(FILE_NAME).getPath(): "
+            // + ED25519.class.getResource(FILE_NAME).getPath());
+            // System.out.println("MyClass.class.getResource(File.separator +
+            // \"FILE_NAME\").getPath(): "
+            // + ED25519.class.getResource(File.separator + "FILE_NAME").getPath());
+            // System.out.println(
+            // "MyClass.class.getResource(\"..\" + File.separator + \"..\" + File.separator
+            // + FILE_NAME).getPath(): "
+            // + ED25519.class.getResource(".." + File.separator + ".." + File.separator +
+            // FILE_NAME)
+            // .getPath());
+
             return signvalue;
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
             return "";
         }
     }
