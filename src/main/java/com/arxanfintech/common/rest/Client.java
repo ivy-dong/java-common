@@ -31,6 +31,9 @@ public class Client {
     // ApiKey is the access key for ACL access api
     public String ApiKey;
 
+    // RouteTag of every url
+    public String RouteTag;
+
     // Cert Path
     public String CertPath;
 
