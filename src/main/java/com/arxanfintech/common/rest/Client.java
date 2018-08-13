@@ -41,6 +41,8 @@ public class Client {
     public String Nonce;
     public String PrivateB64;
 
+    public Boolean EnableCrypto;
+
     public JSONObject getEntParams() {
         String strSignParams = "{\"creator\":\"" + this.Creator + "\",\"nonce\":\"" + this.Nonce
                 + "\",\"privateB64\":\"" + this.PrivateB64 + "\"}";
