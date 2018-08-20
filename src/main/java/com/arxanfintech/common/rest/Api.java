@@ -96,11 +96,11 @@ public class Api {
             Unirest.setHttpClient(httpclient);
 
             Map<String, String> mapHeader = Utils.JsonToMap(request.header);
-            mapHeader.put(Headers.APIKeyHeader, request.client.ApiKey);
+            mapHeader.put(Headers.APIKeyHeader, request.client.GetApiKey());
 
-            if (request.client.RouteTag != "") {
-                mapHeader.put(Headers.FabioRouteTagHeader, request.client.RouteTag);
-                mapHeader.put(Headers.RouteTagHeader, request.client.RouteTag);
+            if (request.client.GetRouteTag() != "") {
+                mapHeader.put(Headers.FabioRouteTagHeader, request.client.GetRouteTag());
+                mapHeader.put(Headers.RouteTagHeader, request.client.GetRouteTag());
             }
 
             HttpResponse<String> res = Unirest.get(request.url).headers(mapHeader).asString();
@@ -108,7 +108,7 @@ public class Api {
             System.out.println("Got remote cipher response: " + respData);
 
             String oriData = "";
-            if (request.client.EnableCrypto) {
+            if (request.client.GetEnableCrypto()) {
                 oriData = request.crypto.decryptAndVerify(respData.getBytes());
             } else {
                 oriData = respData;
@@ -138,18 +138,18 @@ public class Api {
             Unirest.setHttpClient(httpclient);
 
             String buf = "";
-            if (request.client.EnableCrypto) {
+            if (request.client.GetEnableCrypto()) {
                 buf = request.crypto.signAndEncrypt(request.body.toString().getBytes());
             } else {
                 buf = request.body.toString();
             }
 
             Map<String, String> mapHeader = Utils.JsonToMap(request.header);
-            mapHeader.put(Headers.APIKeyHeader, request.client.ApiKey);
+            mapHeader.put(Headers.APIKeyHeader, request.client.GetApiKey());
 
-            if (request.client.RouteTag != "") {
-                mapHeader.put(Headers.FabioRouteTagHeader, request.client.RouteTag);
-                mapHeader.put(Headers.RouteTagHeader, request.client.RouteTag);
+            if (request.client.GetRouteTag() != "") {
+                mapHeader.put(Headers.FabioRouteTagHeader, request.client.GetRouteTag());
+                mapHeader.put(Headers.RouteTagHeader, request.client.GetRouteTag());
             }
 
             System.out.println("after sign and encrypt : " + buf);
@@ -160,7 +160,7 @@ public class Api {
             System.out.println("Got remote cipher response: " + respData);
 
             String oriData = "";
-            if (request.client.EnableCrypto) {
+            if (request.client.GetEnableCrypto()) {
                 oriData = request.crypto.decryptAndVerify(respData.getBytes());
             } else {
                 oriData = respData;
@@ -189,18 +189,18 @@ public class Api {
             Unirest.setHttpClient(httpclient);
 
             String buf = "";
-            if (request.client.EnableCrypto) {
+            if (request.client.GetEnableCrypto()) {
                 buf = request.crypto.signAndEncrypt(request.body.toString().getBytes());
             } else {
                 buf = request.body.toString();
             }
 
             Map<String, String> mapHeader = Utils.JsonToMap(request.header);
-            mapHeader.put(Headers.APIKeyHeader, request.client.ApiKey);
+            mapHeader.put(Headers.APIKeyHeader, request.client.GetApiKey());
 
-            if (request.client.RouteTag != "") {
-                mapHeader.put(Headers.FabioRouteTagHeader, request.client.RouteTag);
-                mapHeader.put(Headers.RouteTagHeader, request.client.RouteTag);
+            if (request.client.GetRouteTag() != "") {
+                mapHeader.put(Headers.FabioRouteTagHeader, request.client.GetRouteTag());
+                mapHeader.put(Headers.RouteTagHeader, request.client.GetRouteTag());
             }
 
             HttpResponse<String> res = Unirest.put(request.url).headers(mapHeader).body(buf).asString();
@@ -210,7 +210,7 @@ public class Api {
             System.out.println("Got remote cipher response: " + respData);
 
             String oriData = "";
-            if (request.client.EnableCrypto) {
+            if (request.client.GetEnableCrypto()) {
                 oriData = request.crypto.decryptAndVerify(respData.getBytes());
             } else {
                 oriData = respData;
@@ -238,17 +238,17 @@ public class Api {
             Unirest.setHttpClient(httpclient);
 
             String buf = "";
-            if (request.client.EnableCrypto) {
+            if (request.client.GetEnableCrypto()) {
                 buf = request.crypto.signAndEncrypt(request.body.toString().getBytes());
             } else {
                 buf = request.body.toString();
             }
             Map<String, String> mapHeader = Utils.JsonToMap(request.header);
-            mapHeader.put(Headers.APIKeyHeader, request.client.ApiKey);
+            mapHeader.put(Headers.APIKeyHeader, request.client.GetApiKey());
 
-            if (request.client.RouteTag != "") {
-                mapHeader.put(Headers.FabioRouteTagHeader, request.client.RouteTag);
-                mapHeader.put(Headers.RouteTagHeader, request.client.RouteTag);
+            if (request.client.GetRouteTag() != "") {
+                mapHeader.put(Headers.FabioRouteTagHeader, request.client.GetRouteTag());
+                mapHeader.put(Headers.RouteTagHeader, request.client.GetRouteTag());
             }
 
             HttpResponse<String> res = Unirest.post(request.url).headers(mapHeader).field("poe_id", poeid)
@@ -271,7 +271,7 @@ public class Api {
             System.out.println("Got remote cipher response: " + respData);
 
             String oriData = "";
-            if (request.client.EnableCrypto) {
+            if (request.client.GetEnableCrypto()) {
                 oriData = request.crypto.decryptAndVerify(respData.getBytes());
             } else {
                 oriData = respData;
