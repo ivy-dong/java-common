@@ -65,6 +65,10 @@ public class Api {
         CloseableHttpClient httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
         Unirest.setHttpClient(httpclient);
 
+        if (request.client == null) {
+            throw new Exception("client must NOT null");
+        }
+
         Map<String, String> mapHeader = Utils.JsonToMap(request.header);
         mapHeader.put(Headers.APIKeyHeader, request.client.GetApiKey());
 
@@ -101,6 +105,10 @@ public class Api {
         SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext);
         CloseableHttpClient httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
         Unirest.setHttpClient(httpclient);
+
+        if (request.client == null) {
+            throw new Exception("client must NOT null");
+        }
 
         String buf = "";
         if (request.client.GetEnableCrypto()) {
@@ -149,6 +157,10 @@ public class Api {
         SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext);
         CloseableHttpClient httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
         Unirest.setHttpClient(httpclient);
+
+        if (request.client == null) {
+            throw new Exception("client must NOT null");
+        }
 
         String buf = "";
         if (request.client.GetEnableCrypto()) {
