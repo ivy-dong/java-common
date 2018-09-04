@@ -221,14 +221,7 @@ public class Utils {
     }
 
     public static Map<String, String> JsonToMap(JSONObject json) throws JSONException {
-        try {
-            if (json == null) {
-                return new HashMap<String, String>();
-            }
-            Map<String, String> retMap = (Map<String, String>) JSON.parse(json.toJSONString());
-            return retMap;
-        } catch (Exception e) {
-            return new HashMap<String, String>();
-        }
+        Map<String, String> retMap = (Map<String, String>) JSON.parse(json.toJSONString());
+        return retMap;
     }
 }
